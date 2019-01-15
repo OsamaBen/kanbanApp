@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Espace chef de projet</title>
+</head>
+<body>
+		<table style="width:80%" border="1 solid">
+		  <tr>
+		    <th>ID</th>
+		    <th>Titre</th> 
+		    <th>Nmobre de sprints</th>
+		    <th>Chef de projet</th>
+		    <td>Actions</td>
+		  </tr>
+		  <tr th:each="p : ${listeProjets}">
+		    <td> <span th:text="${p.id}"></span></td>
+		    <td><span th:text="${p.titre}"></span></td>
+		    <td><span th:text="${#lists.size(p.sprints)}"></span></td>
+		    <td><span th:text="${p.chefProjet.lastName}"></span> <span th:text="${p.chefProjet.firstName}"></span></td>
+		    
+		    <td>x/y/z</td>
+		  </tr>
+		</table>
+</body>
+</html>

@@ -19,21 +19,17 @@ public class Projet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id",insertable = false, updatable = false)
 	private long id;
-	private String description ;
+	private String titre ;
+	
 	@OneToMany(mappedBy="projet",cascade=CascadeType.ALL,orphanRemoval=true)
 	private Set<Sprint> sprints;
-	@ManyToOne
-	@JoinColumn(name = "chef_Projet_id")
+	@ManyToOne @JoinColumn(name = "chef_Projet_id")
 	private ChefProjet chefProjet;
 	
-	public Projet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Projet() {}
 	
 	public Projet(String description) {
-		super();
-		this.description = description;
+		this.titre = description;
 	}
 
 	public long getIdProjet() {
@@ -42,11 +38,35 @@ public class Projet {
 	public void setIdProjet(long idProjet) {
 		this.id = idProjet;
 	}
-	public String getDescription() {
-		return description;
+	public String getTitre() {
+		return titre;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTitre(String description) {
+		this.titre = description;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Set<Sprint> getSprints() {
+		return sprints;
+	}
+
+	public void setSprints(Set<Sprint> sprints) {
+		this.sprints = sprints;
+	}
+
+	public ChefProjet getChefProjet() {
+		return chefProjet;
+	}
+
+	public void setChefProjet(ChefProjet chefProjet) {
+		this.chefProjet = chefProjet;
 	}
 	
 	
