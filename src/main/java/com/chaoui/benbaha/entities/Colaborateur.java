@@ -1,5 +1,9 @@
 package com.chaoui.benbaha.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Colaborateur {
@@ -24,9 +28,8 @@ public class Colaborateur {
 	private String email;
 	private String username;
 	private String password;
-	@OneToOne
-	@JoinColumn(name = "tache_id")
-	private Tache tache;
+	@OneToMany(mappedBy="colaborateur",cascade=CascadeType.ALL,orphanRemoval=true)
+	private Set<Tache> taches=new HashSet<>();
 	@ManyToOne
 	@JoinColumn(name = "Chef_Projet_id")
 	private ChefProjet chefProjet;
